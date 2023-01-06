@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        document.querySelector('html').appendChild(document.createElement('body'))
+        document.querySelector('body').appendChild(document.createElement('div'))
+        document.querySelector('div').appendChild(document.createElement('span'))
+        document.querySelector('span').appendChild(document.createTextNode('Click hear and watch the text change! click'))
+        document.querySelector('div').setAttribute('onclick','addText()')
+
+        function addText() {
+            let para = document.createElement('span')
+            let text = document.createTextNode(' added some text!')
+            para.appendChild(text)
+            document.querySelector('div').appendChild(para)
+        }
+
+        document.querySelector('div').style.background = 'green'
+        document.querySelector('div').style.width = '30%'
+        document.querySelector('div').style.minHeight = '20vh'
+        document.querySelector('div').style.maxHeight = 'fit-content'
+    </script>
+</html>

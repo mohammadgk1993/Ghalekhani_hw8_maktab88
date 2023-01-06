@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        document.querySelector('html').appendChild(document.createElement('body'))
+        document.querySelector('body').appendChild(document.createElement('div'))
+        document.querySelector('div').appendChild(document.createElement('span'))
+        document.querySelectorAll('span')[0].appendChild(document.createTextNode(`Parent node's text`))
+
+        document.querySelector('div').appendChild(document.createElement('div'))
+        document.querySelector('div > div').appendChild(document.createElement('span'))
+        document.querySelectorAll('span')[1].appendChild(document.createTextNode('The target node'))
+
+        document.querySelector('div > div').appendChild(document.createElement('div'))
+        document.querySelector('div > div > div').appendChild(document.createElement('span'))
+        document.querySelectorAll('span')[2].appendChild(document.createTextNode(`The main node's child node`))
+
+        document.querySelector('body').appendChild(document.createElement('button'))
+        document.querySelector('body').appendChild(document.createElement('button'))
+        document.querySelectorAll('button')[0].appendChild(document.createTextNode('parent'))
+        document.querySelectorAll('button')[1].appendChild(document.createTextNode('child'))
+        document.querySelectorAll('button')[0].setAttribute('onclick','parent()')
+        document.querySelectorAll('button')[1].setAttribute('onclick','child()')
+
+        for (let i = 0 ; i < 3 ; i++) {
+            document.querySelectorAll('div')[i].style.background = 'lime'
+            document.querySelectorAll('div')[i].style.margin = '7%'
+            document.querySelectorAll('div')[i].style.width = '90%'
+            document.querySelectorAll('div')[i].style.height = '90%'
+            document.querySelectorAll('div')[i].style.border = '1px solid black'
+        }
+        
+        document.querySelector('div').style.margin = '2%'
+        document.querySelector('div').style.width = '30%'
+        document.querySelector('div').style.minHeight = '20vh'
+        document.querySelector('div').style.maxHeight = 'fit-content'
+
+        let parentText = ''
+        for (let i of document.querySelectorAll('span')) {
+            parentText += i.innerText + ' '
+        }
+
+        let childText = document.querySelectorAll('span')[2].innerText + ' ' + document.querySelectorAll('span')[1].innerText
+
+        function parent() {
+            document.querySelectorAll('span')[1].innerText = parentText
+        }
+
+        function child() {
+            document.querySelectorAll('span')[1].innerText = childText
+        }
+    </script>
+</html>
